@@ -5,71 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uy-bot 官方網站</title>
     <style>
-        /* 基礎樣式 */
+        /* 基礎設定 */
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            line-height: 1.6; 
-            color: #fff; 
             margin: 0; 
-            background-color: #313338; /* Discord 暗色背景 */
+            background-color: #313338; 
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            overflow: hidden; /* 防止捲軸出現破壞美感 */
         }
+
+        /* 1. 動態背景效果 */
+        body::before {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(88,101,242,0.15) 0%, rgba(49,51,56,0) 70%);
+            animation: pulse 10s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        /* 2. 漸現動畫 (Fade In) */
         .hero {
             text-align: center;
-            padding: 40px 20px;
+            animation: fadeInUp 1.2s ease-out;
         }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            color: #5865F2; /* Discord 招牌藍 */
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: #5865F2;
+            text-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
         }
+
         p.subtitle {
             font-size: 1.3rem;
             color: #B5BAC1;
-            max-width: 600px;
-            margin: 0 auto 35px;
+            margin-bottom: 40px;
         }
-        /* 按鈕樣式 */
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn {
-            text-decoration: none;
-            padding: 14px 30px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            font-size: 1.1rem;
-        }
+
+        /* 3. 按鈕互動效果 */
         .btn-primary {
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 8px;
+            font-weight: bold;
             background-color: #5865F2;
             color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
+
         .btn-primary:hover {
+            transform: scale(1.1); /* 微微放大 */
             background-color: #4752C4;
+            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.5); /* 發光效果 */
         }
-        /* 法律連結區域 */
+
+        /* 法律連結 */
         .legal-links {
             position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.9rem;
+            bottom: 30px;
+            animation: fadeIn 2s ease-in;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .legal-links a {
             color: #949BA4;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
         }
+
         .legal-links a:hover {
-            text-decoration: underline;
+            color: #fff;
         }
     </style>
 </head>
@@ -77,14 +107,9 @@
 
     <div class="hero">
         <h1>Uy-bot</h1>
-        <p class="subtitle">
-            專業的伺服器管理與 Minecraft 查詢工具，<br>
-            您的最佳 Discord 夥伴。
-        </p>
+        <p class="subtitle">專業、穩定、全方位的 Discord 社群助手</p>
         
-        <div class="btn-group">
-            <a href="https://discord.gg/dsk3NFUPhN" class="btn btn-primary" target="_blank">邀請機器人</a>
-        </div>
+        <a href="https://discord.gg/tm92hFYTjx" class="btn btn-primary" target="_blank">立即邀請</a>
     </div>
 
     <div class="legal-links">
