@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uy-bot | 專業 Discord 伺服器助手</title>
+    
+    <script>
+        // 1. 告訴瀏覽器不要自動恢復滾動位置
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        // 2. 頁面載入時立即跳到頂部
+        window.scrollTo(0, 0);
+        
+        // 3. 確保在 DOM 載入後再次檢查
+        window.onload = function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 10);
+        };
+    </script>
+
     <style>
         :root {
             --primary: #5865F2;
@@ -85,7 +102,6 @@
         .hero h1 { font-size: 5rem; margin: 0; letter-spacing: -2px; }
         .hero p { color: var(--muted); font-size: 1.3rem; margin: 20px 0 40px; max-width: 600px; }
 
-        /* 動態邀請按鈕 */
         .btn-invite {
             background: var(--primary);
             color: white;
@@ -148,40 +164,40 @@
     <section id="admin" class="section">
         <h2>🛡️ 伺服器管理</h2>
         <div class="cmd-grid">
-            <div class="cmd-card"><span class="cmd-name">/刪除頻道</span><span class="cmd-desc">快速移除不需要的頻道，保持伺服器架構清爽。</span></div>
-            <div class="cmd-card"><span class="cmd-name">/刪除訊息</span><span class="cmd-desc">大量清理頻道歷史訊息，維持社群交流品質。</span></div>
-            <div class="cmd-card"><span class="cmd-name">/機器人身分組</span><span class="cmd-desc">設定與管理機器人在伺服器中的角色。</span></div>
-            <div class="cmd-card"><span class="cmd-name">/成員身分組</span><span class="cmd-desc">快速分配成員權限，簡化管理流程。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/刪除頻道</span><span class="cmd-desc">快速移除頻道。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/刪除訊息</span><span class="cmd-desc">大量清理訊息。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/機器人身分組</span><span class="cmd-desc">管理機器人身分組。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/成員身分組</span><span class="cmd-desc">管理成員身分組。</span></div>
         </div>
     </section>
 
     <section id="giveaway" class="section">
         <h2>🎉 抽獎與計時</h2>
         <div class="cmd-grid">
-            <div class="cmd-card"><span class="cmd-name">/設定抽獎</span><span class="cmd-desc">發起自動化抽獎活動，增加成員互動。</span></div>
-            <div class="cmd-card"><span class="cmd-name">/刪除抽獎</span><span class="cmd-desc">手動結束或強制停用目前的抽獎項目。</span></div>
-            <div class="cmd-card"><span class="cmd-name">/設定計時器</span><span class="cmd-desc">開啟自定義倒數提醒。</span></div>
-            <div class="cmd-card"><span class="cmd-name">/取消計時器</span><span class="cmd-desc">終止正在運行的計時任務。</span></div>
-            <div class="cmd-card"><span class="cmd-name">/計時器列表</span><span class="cmd-desc">查看伺服器中所有進行中的計時項目。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/設定抽獎</span><span class="cmd-desc">發起自動化抽獎。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/刪除抽獎</span><span class="cmd-desc">取消目前的抽獎。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/設定計時器</span><span class="cmd-desc">開啟倒數計時。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/取消計時器</span><span class="cmd-desc">停止計時任務。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/計時器列表</span><span class="cmd-desc">查看計時清單。</span></div>
         </div>
     </section>
 
     <section id="minecraft" class="section">
         <h2>🎮 遊戲與通知</h2>
         <div class="cmd-grid">
-            <div class="cmd-card"><span class="cmd-name">/查詢麥塊伺服器狀態</span><span class="cmd-desc">即時獲取 Minecraft 伺服器延遲、人數與版本。</span></div>
-            <div class="cmd-card"><span class="cmd-name">/伺服器歡迎訊息</span><span class="cmd-desc">設定新成員加入時的專屬問候通知。</span></div>
-            <div class="cmd-card"><span class="cmd-name">/伺服器道別訊息</span><span class="cmd-desc">設定成員離開伺服器時的通知訊息。</span></div>
-            <div class="cmd-card"><span class="cmd-name">/伺服器加成訊息</span><span class="cmd-desc">當有人 Boost 伺服器時發出感謝。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/查詢麥塊伺服器狀態</span><span class="cmd-desc">即時獲取伺服器資訊。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/伺服器歡迎訊息</span><span class="cmd-desc">成員加入歡迎通知。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/伺服器道別訊息</span><span class="cmd-desc">成員離開道別通知。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/伺服器加成訊息</span><span class="cmd-desc">伺服器 Boost 感謝。</span></div>
         </div>
     </section>
 
     <section id="voice" class="section">
         <h2>🔊 動態語音</h2>
         <div class="cmd-grid">
-            <div class="cmd-card"><span class="cmd-name">/動態語音設定</span><span class="cmd-desc">配置自動建立頻道時的分類與名稱規則。</span></div>
-            <div class="cmd-card"><span class="cmd-name">/動態語音開啟</span><span class="cmd-desc">正式啟動動態語音系統。</span></div>
-            <div class="cmd-card"><span class="cmd-name">/動態語音關閉</span><span class="cmd-desc">停用並恢復手動語音管理。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/動態語音設定</span><span class="cmd-desc">配置動態語音規則。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/動態語音開啟</span><span class="cmd-desc">啟用自動建立頻道。</span></div>
+            <div class="cmd-card"><span class="cmd-name">/動態語音關閉</span><span class="cmd-desc">關閉自動建立頻道。</span></div>
         </div>
     </section>
 
@@ -192,16 +208,5 @@
         </div>
         <p>&copy; 2026 Uy-bot.</p>
     </footer>
-
-    <script>
-        // 確保重新整理後回到最上方
-        window.onbeforeunload = function () {
-            window.scrollTo(0, 0);
-        }
-        if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'manual';
-        }
-    </script>
-
 </body>
 </html>
