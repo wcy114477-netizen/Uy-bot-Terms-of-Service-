@@ -3,119 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uy-bot 官方網站</title>
+    <title>Uy-bot | 專業 Discord 伺服器管理</title>
     <style>
-        /* 基礎設定 */
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            margin: 0; 
-            background-color: #313338; 
-            color: #fff;
+        :root {
+            --primary-color: #5865F2;
+            --bg-dark: #0F1113;
+            --card-bg: #18191C;
+            --text-main: #FFFFFF;
+            --text-muted: #B5BAC1;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* 導覽列 */
+        nav {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            overflow: hidden; /* 防止捲軸出現破壞美感 */
+            padding: 20px 10%;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        /* 1. 動態背景效果 */
-        body::before {
-            content: "";
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(88,101,242,0.15) 0%, rgba(49,51,56,0) 70%);
-            animation: pulse 10s infinite alternate;
-            z-index: -1;
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary-color); }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 25px;
+            transition: 0.3s;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.2); opacity: 0.8; }
-        }
+        .nav-links a:hover { color: #fff; }
 
-        /* 2. 漸現動畫 (Fade In) */
+        /* 主視覺區 (Hero) */
         .hero {
+            padding: 100px 10% 80px;
             text-align: center;
-            animation: fadeInUp 1.2s ease-out;
+            background: radial-gradient(circle at center, rgba(88,101,242,0.1) 0%, transparent 70%);
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .hero h1 { font-size: 4rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; }
 
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
-            color: #5865F2;
-            text-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
-        }
-
-        p.subtitle {
-            font-size: 1.3rem;
-            color: #B5BAC1;
-            margin-bottom: 40px;
-        }
-
-        /* 3. 按鈕互動效果 */
-        .btn-primary {
-            text-decoration: none;
-            padding: 15px 35px;
-            border-radius: 8px;
-            font-weight: bold;
-            background-color: #5865F2;
+        .btn-main {
+            background: var(--primary-color);
             color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.1); /* 微微放大 */
-            background-color: #4752C4;
-            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.5); /* 發光效果 */
-        }
-
-        /* 法律連結 */
-        .legal-links {
-            position: absolute;
-            bottom: 30px;
-            animation: fadeIn 2s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .legal-links a {
-            color: #949BA4;
+            padding: 15px 40px;
+            border-radius: 8px;
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 0.9rem;
-            transition: color 0.3s;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            display: inline-block;
         }
 
-        .legal-links a:hover {
-            color: #fff;
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(88,101,242,0.3); }
+
+        /* 功能特點區 (Features) */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 60px 10%;
         }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid #2e2f34;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover { border-color: var(--primary-color); transform: translateY(-5px); }
+
+        .feature-card h3 { color: var(--primary-color); margin-top: 0; }
+        .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* 頁尾 */
+        footer {
+            padding: 60px 10%;
+            border-top: 1px solid #2e2f34;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .footer-links { margin-bottom: 20px; }
+        .footer-links a { color: var(--text-muted); margin: 0 15px; text-decoration: none; font-size: 0.9rem; }
+        .footer-links a:hover { color: #fff; }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <h1>Uy-bot</h1>
-        <p class="subtitle">專業、穩定、全方位的 Discord 社群助手</p>
-        
-        <a href="https://discord.gg/tm92hFYTjx" class="btn btn-primary" target="_blank">立即邀請</a>
-    </div>
+    <nav>
+        <div class="logo">Uy-bot</div>
+        <div class="nav-links">
+            <a href="#features">功能</a>
+            <a href="tos.html">條款</a>
+            <a href="privacy.html">隱私</a>
+        </div>
+    </nav>
 
-    <div class="legal-links">
-        <a href="tos.html">服務條款</a>
-        <a href="privacy.html">隱私權政策</a>
-    </div>
+    <section class="hero">
+        <h1>讓伺服器管理<br>變得更簡單</h1>
+        <p>Uy-bot 為您的 Discord 社群提供最穩定的管理工具、Minecraft 查詢系統與自動化功能，助您打造頂尖伺服器。</p>
+        <a href="https://discord.gg/tm92hFYTjx" class="btn-main" target="_blank">立即加入 Discord</a>
+    </section>
 
-</body>
-</html>
+    <section class="features" id="features">
+        <div class="feature-card">
+            <h3>🛡️ 專業管理</h3>
+            <p>自動化歡迎訊息、身分組管理與精準的審核工具，讓管理員事半功倍。</p>
+        </div>
+        <div class="feature-card">
+            <h3>🎮 Minecraft 整合</h3>
+            <p>即時查詢伺服器狀態、在線人數與版本資訊，讓玩家隨時掌握動態。</p>
+        </div>
+        <div class="feature-card">
+            <h3>🎁 抽獎系統</h3>
+            <p>公平公正的抽獎機制，內建計時器與自動開獎，提升成員活躍度。</p>
+        </div>
+        <div class="feature-card">
+            <h3>🔊 動態語音</h3>
+            <p>自動管理語音頻道，隨進隨開，人走即刪，保持頻道清爽不凌亂。</p>
+        </div>
+    </section
