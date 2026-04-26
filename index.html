@@ -39,7 +39,8 @@
             --muted: #B5BAC1;
         }
 
-        html { scroll-behavior: auto !important; }
+        /* 這裡控制全局平滑捲動，但在 JS 中會先暫時關閉以防止載入時跳動 */
+        html { scroll-behavior: smooth; }
 
         body { 
             font-family: 'Inter', -apple-system, sans-serif; 
@@ -147,11 +148,16 @@
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
+
+        // 初始載入時先關閉平滑捲動，避免頁面重整時「滑」到頂部
+        document.documentElement.style.scrollBehavior = "auto";
         window.scrollTo(0, 0);
 
         document.addEventListener("DOMContentLoaded", function() {
             window.scrollTo(0, 0);
             document.body.style.opacity = "1";
+            
+            // 延遲一點點時間再開啟平滑捲動，這樣點選連結就會有滑動動畫了
             setTimeout(() => {
                 document.documentElement.style.scrollBehavior = "smooth";
             }, 100);
