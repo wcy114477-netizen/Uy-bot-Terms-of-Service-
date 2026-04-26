@@ -1,1 +1,1 @@
-# Uy-bot-Terms-of-Service-
+# Uy-bot
